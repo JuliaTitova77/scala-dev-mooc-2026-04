@@ -60,46 +60,46 @@ object type_system {
   case class StringInput(str: String) extends Input
   case class IntInput(str: Int) extends Input
   case class BooleanInput(str: Boolean) extends Input
-  
+
   def parseInput(input: UserInput): String = input match {
     case s: String => "String"
     case s: Int => "Int"
     case s: Boolean => "Boolean"
   }
-  
+
   parseInput("Hello")
   parseInput(10)
   parseInput(true)
-  
+
   // type alias
-  
+
   type UserInput = String | Int | Boolean
-  
-  
+
+
   // dependent types
-  
+
   trait Identifiable:
     type Id
     def id: Id
-  
+
   trait Entity extends Identifiable
-  
+
   class Payment(_id: Int) extends Entity:
     override type Id = Int
 
     override def id: Id = _id
-    
+
   def getEntityById(entity: Entity) = ???
 
-    /**
+  /**
    * case class
    *
    */
 
-   case class User(id: Int, email: String)
+  case class User(id: Int, email: String)
 
-   val user = User(1, "foo@gmail.com")
-   val user2 = user.copy(id = 2)
+  val user = User(1, "foo@gmail.com")
+  val user2 = user.copy(id = 2)
 
 
 
@@ -131,7 +131,7 @@ object type_system {
   val v = new A with D with C with B
 
 
-   // A -> B -> C -> E -> D
+  // A -> B -> C -> E -> D
   val v1 = new A with E with D with C with B
   // DECBA
 }

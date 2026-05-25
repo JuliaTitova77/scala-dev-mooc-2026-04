@@ -1,9 +1,15 @@
 package ru.otus.module1
 
-
 object App {
   def main(args: Array[String]): Unit = {
     println("Hello world")
-    pattern_matching
+    val f = hof.logRunningTime(hof.dumb)
+    f("Oops")
+    val list1 = List(1,2,3)
+    val list2 = List(7,8,9)
+    val zipped = list1.zip(list2)
+    println(list1)
+    println(list2)
+    println(zipped)
   }
 }

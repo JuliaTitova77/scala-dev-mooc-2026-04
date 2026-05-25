@@ -4,11 +4,9 @@ import ru.otus.module1.variance.Animal
 
 import scala.language.postfixOps
 
-
 /**
  * referential transparency
  */
-
 
 // recursion
 
