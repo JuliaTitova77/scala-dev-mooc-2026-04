@@ -46,3 +46,5 @@ build/
 ### Scala ###
 .bsp/
 project/target
+/.idea/
+/.scalafmt.conf
