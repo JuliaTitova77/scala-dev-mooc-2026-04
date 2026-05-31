@@ -1,13 +1,11 @@
 package ru.otus.module1
 
-import ru.otus.module1.collections.ListLike
 import ru.otus.module1.collections2.ToyList
 
-
-object App {
+object App_hw01 {
   def main(args: Array[String]): Unit = {
     println("Hello world")
-    
+
     val l1 = ToyList(1, 2, 3)
     val l2 = ToyList(4, 5, 6)
 
@@ -49,6 +47,5 @@ object App {
         v % 2 == 0
       }
     )
-
   }
 }
