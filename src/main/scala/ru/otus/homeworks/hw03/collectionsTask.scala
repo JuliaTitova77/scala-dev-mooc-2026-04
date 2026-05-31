@@ -1,7 +1,7 @@
-package ru.otus.module1.collectionsHW
+package ru.otus.homeworks.hw03
 
 object collectionsTask {
-  def isASCIIString(str: String): Boolean = str.matches("[A-Za-z]+")
+  private def isASCIIString(str: String): Boolean = str.matches("[A-Za-z]+")
 
   /**
    * Реализуйте метод который первый элемент списка не изменяет, а для последующих алгоритм следующий:
@@ -13,9 +13,23 @@ object collectionsTask {
    * List("Оказывается", "," "звук", "КЛАВИШЬ", "печатной", "машинки", "не", "стал", "ограничивающим", "фактором")
    * HINT: Тут удобно использовать collect и zipWithIndex
    *
-   * **/
+   * * */
   def capitalizeIgnoringASCII(text: List[String]): List[String] = {
-    List.empty
+    val firstElem = text.head
+    val rest = text.tail
+    var lst = List(firstElem)
+
+    rest
+      .foreach(elem => {
+        val transformed = if (isASCIIString(elem)) {
+          elem.toUpperCase
+        } else {
+          elem.toLowerCase
+        }
+        lst = lst.appended(transformed)
+      }
+      )
+    lst
   }
 
   /**
@@ -28,7 +42,19 @@ object collectionsTask {
    * HINT: Для всех возможных комбинаций чисел стоит использовать Map
    * **/
   def numbersToNumericString(text: String): String = {
-    ""
+    val replacements = Map('0' -> "null", '1' -> "one", '2' -> "two", '3' -> "three", '4' -> "four", '5' -> "five",
+      '6' -> "six", '7' -> "seven", '8' -> "eight", '9' -> "nine")
+
+    var result = ""
+    text
+      .foreach(c =>
+        if (replacements.contains(c)) {
+          result = result + replacements(c)
+        } else {
+          result = result + c
+        }
+      )
+    result
   }
 
   /**
@@ -46,7 +72,9 @@ object collectionsTask {
    * Реализуйте метод, который примет две коллекции (два источника) и вернёт объединенный список уникальный значений
    **/
   def intersectionAuto(dealerOne: Iterable[Auto], dealerTwo: Iterable[Auto]): Iterable[Auto] = {
-    Iterable.empty
+    (for {
+      auto <- dealerOne ++ dealerTwo
+    } yield auto).toSet
   }
 
   /**
@@ -55,6 +83,12 @@ object collectionsTask {
    * и вернёт уникальный список машин обслуживающихся в первом дилерском центре и не обслуживающимся во втором
    **/
   def filterAllLeftDealerAutoWithoutRight(dealerOne: Iterable[Auto], dealerTwo: Iterable[Auto]): Iterable[Auto] = {
-    Iterable.empty
+    val setTwo = dealerTwo.toSet
+
+    (for {
+      auto <- dealerOne
+      if !setTwo.contains(auto)
+    } yield auto).toSet
+  
   }
 }
