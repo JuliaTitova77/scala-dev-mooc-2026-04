@@ -1,7 +1,7 @@
 package module1
 
 import org.scalatest.flatspec.AnyFlatSpec
-import ru.otus.module1.collectionsHW.collectionsTask.*
+import ru.otus.homeworks.hw03.collectionsTask.*
 
 class CheckCollectionsTask extends AnyFlatSpec {
 
