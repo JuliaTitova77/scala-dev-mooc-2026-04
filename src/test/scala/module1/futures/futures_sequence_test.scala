@@ -1,7 +1,7 @@
 package module1.futures
 
 import org.scalatest.flatspec.AnyFlatSpec
-import ru.otus.module1.futures.task_futures_sequence
+import ru.otus.homework.hw04.task_futures_sequence
 
 import java.util.concurrent.atomic.AtomicInteger
 import scala.concurrent.duration.Duration
